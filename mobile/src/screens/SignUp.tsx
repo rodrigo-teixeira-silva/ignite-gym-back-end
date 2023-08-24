@@ -4,7 +4,6 @@ import { useForm, Controller } from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import { Axios } from 'axios';
 import { api } from '@services/api';
 
 import LogoSvg from '@assets/logo.svg';
@@ -21,6 +20,7 @@ type FormDataProps = {
     email: string;
     password: string;
     password_confirm: string;
+   
 }
 
 const signUpSchema = yup.object({
@@ -34,8 +34,9 @@ export function SignUp(){
 
     const toast = useToast();
     
-    const { control, handleSubmit, formState:{errors}} = useForm<FormDataProps>({
-        resolver: yupResolver(signUpSchema)
+  
+  const { control, handleSubmit, formState: { errors } } = useForm<FormDataProps>({
+    resolver: yupResolver(signUpSchema),
     });
 
     const navigation = useNavigation();
@@ -47,7 +48,6 @@ export function SignUp(){
        try {
         const response = await api.post('/users', {name, email, password});
         console.log(response.data); 
-       
         } catch(error){
             const isAppError = error instanceof AppError;
             const title = isAppError ? error.message: 'Não foi possível criar a conta. Tente novamente mais tarde.'

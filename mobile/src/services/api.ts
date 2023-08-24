@@ -5,11 +5,11 @@ const api = axios.create({
     baseURL: 'http://192.168.3.4:3333'
 });
 
-api.interceptors.response.use(response=> response, error => {
-    if(error.response && error.response.data){
+api.interceptors.response.use(response => response, error => {
+    if(error && error.response.data){
         return Promise.reject(new AppError(error.response.data.message));
     } else {
-        return Promise.reject(new AppError("Erro no servidor, Tente nocmente mais tarde."));
+        return Promise.reject(error);
     }
 });
 
