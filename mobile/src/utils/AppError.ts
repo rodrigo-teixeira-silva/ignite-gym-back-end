@@ -2,7 +2,7 @@ export class AppError {
     message: string | undefined;
 
 
-    construtor(message: string) {
+    constructor(message: string) {
         this.message = message;
     }
 }
