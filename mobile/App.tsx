@@ -5,9 +5,12 @@ import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/
 
 import { Routes } from './src/routes';
 
-import { Loading } from '@components/loading';
+import { AuthContextProvider } from '@contexts/AuthContext';
+
+import { AuthContext } from '@contexts/AuthContext';
 
 import { THEME } from './src/theme'
+import { Loading } from '@components/loading';
 
 export default function App() {
  
@@ -19,9 +22,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
     />
-
-      {fontLoaded ? <Routes/> : <Loading/>}
-
+      <AuthContextProvider>
+        {fontLoaded ? <Routes/> : <Loading/>}
+      </AuthContextProvider>
     </NativeBaseProvider>
   );
 }
