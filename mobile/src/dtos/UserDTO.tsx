@@ -1,6 +1,6 @@
 export type UserDTO = {
     id:string;
-    usuario:string;
+    name:string;
     email:string;
     avatar: string;
 }
