@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Ignite Gym API",
-        "description": "API developed by Rodrigo Gonçalves to be used in Ignite training in the mobile backend integration.",
+        "description": "API developed .",
         "version": "1.0.0",
         "contact": {
             "email": "rodrigo.rgtic@gmail.com"

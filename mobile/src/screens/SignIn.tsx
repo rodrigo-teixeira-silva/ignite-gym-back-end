@@ -6,15 +6,15 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { AuthNavigationRoutesProps } from "@routes/auth.routes"; 
 
+import { useAuth } from "@hooks/useAuth"
+
 import BackgroundImg from '@assets/background.png';
 
 import LogoSvg from '@assets/logo.svg';
 import { Input } from '@components/input';
 import { Button } from '@components/button';
 
-
-
-type FormDataProps = {
+type FormData = {
     email: string;
     password: string;
 
@@ -26,9 +26,10 @@ const SignInSchema = yup.object({
 });
 
 export function SignIn(){
+    const { SignIn } = useAuth();
   
-    const { control, handleSubmit, formState: {errors} } = useForm<FormDataProps>({
-        resolver: yupResolver(SignInSchema)
+    const { control, handleSubmit, formState: {errors} } = useForm<FormData>({
+         resolver: yupResolver(SignInSchema)
     });
 
     const navigation = useNavigation<AuthNavigationRoutesProps>();
@@ -37,8 +38,8 @@ export function SignIn(){
     navigation.navigate('signUp');   
     }
     
-    function handleSignIn({email, password}: FormDataProps){
-        console.log(email, password);
+    async function handleSignIn({ email, password }: FormData){
+        await SignIn(email, password);
     }
 
     return(
