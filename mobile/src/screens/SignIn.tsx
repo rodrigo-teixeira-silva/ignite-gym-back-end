@@ -17,30 +17,31 @@ import { Button } from '@components/button';
 import { AppError } from "@utils/AppError"
 
 type FormData = {
-    email: string;
-    password: string;
+  email: string;
+  password: string;
 
 }
 
 const SignInSchema = yup.object({
-    email: yup.string().required('Informe o E-mail.').email('E-mail inválido.'),
-    password: yup.string().required('Informe a senha.').min(6, 'Asenha deve ter palo menos 6 digitos.')
+  email: yup.string().required('Informe o E-mail.').email('E-mail inválido.'),
+  password: yup.string().required('Informe a senha.').min(6, 'Asenha deve ter palo menos 6 digitos.')
 });
 
 export function SignIn(){
-    const [isLoading, setIsLoading] = useState(false);
-    const { SignIn } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { SignIn } = useAuth();
   
-    const { control, handleSubmit, formState: {errors} } = useForm<FormData>({
-         resolver: yupResolver(SignInSchema)
-    });
+  const { control, handleSubmit, formState: {errors} } = useForm<FormData>({
+    resolver: yupResolver(SignInSchema)
+  });
 
-    const navigation = useNavigation<AuthNavigationRoutesProps>();
+  const navigation = useNavigation<AuthNavigationRoutesProps>();
 
-    const toast = useToast();
+  const toast = useToast();
 
 
-    function handleNewAccount(){
+  function handleNewAccount(){
     navigation.navigate('signUp');   
     }
     
@@ -51,16 +52,16 @@ export function SignIn(){
         
       } catch (error) {
 
-        const isAppError = error instanceof AppError;
-        const title = isAppError ? error.message : 'Não foi possivel entrar. Tente novamente mais tarde.'
+    const isAppError = error instanceof AppError;
+    const title = isAppError ? error.message : 'Não foi possível entrar. Tente novamente mais tarde.'
         
-        setIsLoading(false);
+      setIsLoading(false);
 
-        toast.show({
-            title,
-            placement: 'top',
-            bgColor:'red.500'
-        });
+      toast.show({
+        title,
+        placement: 'top',
+        bgColor:'red.500'
+      });
 
        
       }
@@ -92,33 +93,37 @@ export function SignIn(){
                 Acesse a sua conta 
             </Heading>
 
-            <Controller
-                control={control}
-                name= "email"
-                    render={({ field: {onChange, value}})=>(
-                    <Input  placeholder='E-mail'
-                    keyboardType="email-address"
-                    autoCapitalize="none"
-                    onChangeText={onChange}
-                    value={value}
-                    errorMessage={errors.email?.message}
-                    />
-                )}
-            />
+
 
             <Controller
                 control={control}
-                name= "password"
+                name= "email"
+                rules={{ required: 'Informe o e-mail'}}
                     render={({ field: {onChange, value}})=>(
-                    <Input placeholder='Senha'
-                    secureTextEntry
-                    onChangeText={onChange}
-                    value={value}
-                    onSubmitEditing={handleSubmit(handleSignIn)}
-                    returnKeyType="send"
-                    errorMessage={errors.password?.message}
-                    />
-                )}
+            <Input  
+                placeholder='E-mail'
+                keyboardType="email-address"
+                autoCapitalize="none"
+                onChangeText={onChange}
+                value={value}
+                errorMessage={errors.email?.message}
+                />
+              )}
+            />
+
+            <Controller
+              control={control}
+              name= "password"
+              render={({ field: {onChange, value}})=>(
+            <Input placeholder='Senha'
+              secureTextEntry
+              onChangeText={onChange}
+              value={value}
+              onSubmitEditing={handleSubmit(handleSignIn)}
+              returnKeyType="send"
+              errorMessage={errors.password?.message}
+            />
+          )}
             />
 
 
@@ -136,13 +141,12 @@ export function SignIn(){
             </Text>
 
             <Button 
-                title="Criar conta" 
-                variant="outline"
-                onPress={handleNewAccount}
-
+              title="Criar conta" 
+              variant="outline"
+              onPress={handleNewAccount}
             />
         </Center>
-    </VStack>
+      </VStack>
     </ScrollView>
     );
 }
