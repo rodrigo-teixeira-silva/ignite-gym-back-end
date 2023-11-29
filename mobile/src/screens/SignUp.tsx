@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native'
 import {VStack, Image, Text, Center, Heading, ScrollView, useToast } from 'native-base'
-import { useForm, Controller } from 'react-hook-form'
+
+import { useForm, Controller, Form } from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
@@ -35,6 +36,11 @@ const signUpSchema = yup.object({
 });
 
 export function SignUp(){
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
+
     const [isLoading, setIsLoading] =useState(false);
 
     const toast = useToast();
@@ -50,6 +56,8 @@ export function SignUp(){
     function handleGoBack(){
         navigation.goBack();
     }
+
+
 
     async function handleSignUp({ name, email, password }: FormDataProps) {
        try {
@@ -110,6 +118,7 @@ export function SignUp(){
                     onChangeText={onChange}
                     value={value}
                     errorMessage={errors.name?.message}
+                    
                 
                     />
                 )}
