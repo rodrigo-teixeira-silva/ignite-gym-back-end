@@ -28,7 +28,6 @@
     "react-native-screens": "~3.20.0",
     "react-native-svg": "13.4.0",
     "yup": "^1.3.2",
-    "react-native-onesignal": "4.5.1",
     "expo-splash-screen": "~0.18.2"
   },
   "devDependencies": {
