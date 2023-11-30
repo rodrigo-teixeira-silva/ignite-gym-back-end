@@ -20,7 +20,7 @@
     "expo-image-picker": "~14.1.1",
     "expo-status-bar": "~1.4.4",
     "native-base": "^3.4.28",
-    "onesignal-expo-plugin": "4.5.1",
+    
     "react": "18.2.0",
     "react-hook-form": "^7.48.2",
     "react-native": "0.71.14",
