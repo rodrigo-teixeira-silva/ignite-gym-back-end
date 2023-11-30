@@ -14,7 +14,7 @@ import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 type AppRoutes = {
     home: undefined;
-    exercises: undefined;
+    exercises: {exerciseId: string };
     profile: undefined;
     history: undefined;
 }
