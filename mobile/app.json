@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Ignite_Gym",
-    "slug": "Ignite_Gym",
+    "name": "Ignitegym",
+    "slug": "Ignitegym",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,12 +21,13 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
-      
+
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.codelink.ignitegym"
+      "bundleIdentifier": "com.rocketseat.Ignitegym"
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -37,8 +38,23 @@
       ],
       "package": "com.codelink.ignite_gym"
     },
+
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+
+    "assetsPlugins": ["expo-asset/tools/hashAssetFiles"],
+
+    "plugins": [
+      [
+        "onesignal-expo-plugin",
+        {
+          "mode": "development"
+        }
+      ]
+    ]
   }
 }
+
+
+

@@ -1,4 +1,4 @@
-import { HStack, Heading, Icon, VStack,Text, Image, Box, useToast} from "native-base";
+ import { HStack, Heading, Icon, VStack,Text, Image, Box, useToast} from "native-base";
 import { TouchableOpacity } from "react-native";
 import {Feather} from '@expo/vector-icons';
 import { useNavigation, useRoute } from "@react-navigation/native";
