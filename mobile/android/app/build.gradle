@@ -113,13 +113,13 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.ignitegym"
+    namespace 'com.codelink.ignite_gym'
     defaultConfig {
-        applicationId "com.ignitegym"
+        applicationId 'com.codelink.ignite_gym'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
     }
 
     splits {

@@ -1,4 +1,4 @@
-package com.ignitegym;
+package com.codelink.ignite_gym;
 
 import android.os.Build;
 import android.os.Bundle;

@@ -32,7 +32,7 @@ const signUpSchema = yup.object({
    // password_confirm: yup.string().required('Confirme a senha.').oneOf([yup.ref('password'), null],'As senhas não conferem'),
     password_confirm: yup.string().required('Confirme a senha.').oneOf([yup.ref('password')], 'As senhas não conferem')
 
-  
+
 });
 
 export function SignUp(){
