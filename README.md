@@ -1,29 +1,30 @@
+
 ## 💻 Projeto
 
-# Ignite Gym Back-end
+# Ignite Gym
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/rodrigo-teixeira-silva/ignite-gym-back-end/new/main)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/linkdri1/Ignite_Gym/blob/rotas_privadas/LICENSE)
 
 # Sobre o projeto
 
-Back end da aplicação gym
+Aplicação com lista de treinos diários com react-native, componentes estilização, biblioteca native base, rotas da aplicação 
 
  **</>Codelink**.
 
-Aplicação utilizando framework react native com login, cadastro, troca de foto de usuário com respostas de erro do back end
+Aplicação utilizando framework react native na pratica, SignIn, SignUp, tela principal cards treinos diarios, tela de edição com acesso netivo a galeria de fotos. 
 
 ## Layout mobile
-### Tela SignIn com retorno de erro do back-end
+|  Tela SignIn  |   Tela de SignUp  |     Tela Home    |
+| ------------- | ----------------- | ---------------- | 
+| <img src="./assets/imagem-2.png" width="200px" height="400px" style="padding-right: 10px;"/> | <img src="./assets/imagem-3.png" width="200px" height="400px" style="padding-left: 10px;"/> | <img src="./assets/imagem-4.png" width="200px" height="400px" style="padding-left: 10px;"/> |
 
-<img src="./src/assets/README.md/Tela%20de%20signin%20mensagem%20de%20erros%20do%20back-end.png" alt="Tela SignIn com retorno de erro do back-end" width="320" height="330">
-
-### Tela de signUp com mensagem de error do back-end
-
-
-<img src="./src/assets/README.md/Tela de signup com mensagem de error do back-end.png" alt="Tela de SignUp" width="160" height="330">
+|  Tela Treino  |  Tela de histórico de execícios  |  Tela de perfil]   |
+| ------------- | -------------------------------- | ------------------ | 
+| <img src="./assets/imagem-5.png" width="200px" height="400px" style="padding-right: 10px;"/> | <img src="./assets/imagem-6.png" width="200px" height="400px" style="padding-left: 10px;"/> | <img src="./assets/imagem-7.png" width="200px" height="400px" style="padding-left: 10px;"/>  |
 
 
-![Tela Home](./assets/imagem-4.png)
+
+
 ![Tela Treino](./assets/imagem-5.png)
 ![Tela de histórico de execícios](./assets/imagem-6.png)
 ![Tela de perfil](./assets/imagem-7.png)
@@ -43,7 +44,7 @@ Aplicação utilizando framework react native com login, cadastro, troca de foto
 - [React Navigation](https://reactnavigation.org)
 -[Image picker](https://docs.expo.dev/versions/latest/sdk/imagepicker/)
 - [NPM](https://docs.npmjs.com)
-- [AsyncStorage](https://docs.expo.dev/versions/latest/sdk/async-storage/)
+
 
 # Funcionalidades do projet
 
@@ -59,16 +60,16 @@ Aplicação utilizando framework react native com login, cadastro, troca de foto
 
 ```bash
 # clonar repositório
-git clone https://github.com/rodrigo-teixeira-silva/Ignite_Gym.git
+https://github.com/rodrigo-teixeira-silva/Ignite_Gym.git
 
 # entrar na pasta do projeto.
- cd Projeto Ignite_Gym
+cd Projeto Ignite_Gym
 
 # instalar o pacote node_modules.
- npm install
+npm install
 
 # Executar o projeto
- npx expo run start
+npx expo run start
 ```
 ## Aplicação Mobile
 Pré-requisitos: npm 
@@ -80,6 +81,5 @@ Rodrigo Teixeira Silva
 <img style = "width:200px" src="https://github.com/rodrigo-teixeira-silva.png" alt="Imagem desenvolvedor" >
 
 ## [Linkedin](https://www.linkedin.com/in/rodrigo-teixeira-silva/)
-
 
 
