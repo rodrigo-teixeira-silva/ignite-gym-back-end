@@ -1,6 +1,5 @@
 import { UserDTO } from "@dtos/UserDTO";
 import React, { createContext, ReactNode, useEffect, useState } from "react";
-
 import {
   storageUserSave,
   storageUserGet,
