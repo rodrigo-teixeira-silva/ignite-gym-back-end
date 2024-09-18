@@ -54,7 +54,6 @@ export function SignIn() {
   const toast = useToast();
   const [isLoading, setIsLoading] = useState(false);
 
-
   function handleNewAccount() {
     navigation.navigate("signUp");
   }
@@ -75,7 +74,7 @@ export function SignIn() {
         bgColor: "red.500",
       });
 
-      setIsLoading(false);  
+      setIsLoading(false);
     }
   }
 
@@ -94,7 +93,7 @@ export function SignIn() {
         />
         <Center my={24}>
           <LogoSvg />
-          
+
           <Text color="gray.100" fontSize="sm">
             Treine sua mente e o seu corpo
           </Text>
@@ -135,16 +134,17 @@ export function SignIn() {
               />
             )}
           />
-  
-        <Button title="acessar" 
-        isLoading={isLoading}
-        onPress={handleSubmit(handleSignIn)} />
 
+          <Button
+            title="acessar"
+            isLoading={isLoading}
+            onPress={handleSubmit(handleSignIn)}
+          />
         </Center>
-          <Center mt={24}>
-            <Text color="gray.100" fontSize="sm" mb={3} fontFamily="body">
-              Ainda não tem acesso?
-            </Text>
+        <Center mt={24}>
+          <Text color="gray.100" fontSize="sm" mb={3} fontFamily="body">
+            Ainda não tem acesso?
+          </Text>
 
           <Button
             title="Criar conta"

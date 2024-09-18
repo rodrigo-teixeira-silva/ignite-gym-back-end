@@ -46,7 +46,8 @@ const signUpSchema = yup.object({
 export function SignUp() {
   const toast = useToast();
 
-  const {control,
+  const {
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<FormDataProps>({
