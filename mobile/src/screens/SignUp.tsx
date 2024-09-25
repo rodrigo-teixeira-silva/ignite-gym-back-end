@@ -21,7 +21,8 @@ import BackgroundImg from "@assets/background.png";
 import { Input } from "@components/input";
 import { Button } from "@components/button";
 import { Alert } from "react-native";
-import AppError from "api/src/utils/AppError";
+//import AppError from "api/src/utils/AppError";
+import { AppError } from "@utils/AppError";
 
 type FormDataProps = {
   name: string | undefined;

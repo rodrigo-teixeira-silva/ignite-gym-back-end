@@ -17,13 +17,13 @@ export function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [Groups, setGroups] = useState<string[]>([]);
   const [exercises, setExercises] = useState<ExerciseDTO[]>([]);
-  const [groupSelected, setGroupSelected] = useState("Costas");
+  const [groupSelected, setGroupSelected] = useState("antebraço");
 
   const toast = useToast();
   const navigation = useNavigation<appNavigatorRoutesProps>();
 
-  function handleOpenExercicesDetails(exercisesId: string) {
-    navigation.navigate("exercises", {exercisesId});
+  function handleOpenExerciseDetails(exerciseId: string) {
+    navigation.navigate("exercise", { exerciseId });
   }
 
   async function fetGroups() {
@@ -49,7 +49,7 @@ export function Home() {
       setIsLoading(true);
 
       const response = await api.get(`/exercises/bygroup/${groupSelected}`);
-     
+      setExercises(response.data);
     } catch (error) {
       const isAppError = error instanceof AppError;
       const title = isAppError
@@ -117,9 +117,9 @@ export function Home() {
             data={exercises}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <ExercisesCard 
-              onPress={()=>handleOpenExercicesDetails(item.id)} 
-              data={item} 
+              <ExercisesCard
+                onPress={() => handleOpenExerciseDetails(item.id)}
+                data={item}
               />
             )}
             showsVerticalScrollIndicator={false}

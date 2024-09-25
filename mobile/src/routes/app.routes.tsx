@@ -14,7 +14,7 @@ import { color } from 'native-base/lib/typescript/theme/styled-system';
 
 type AppRoutes = {
     home: undefined;
-    exercises: {exercisesId: string};
+    exercise: { exerciseId: string };
     profile: undefined;
     history: undefined;
 }
@@ -74,7 +74,7 @@ export function AppRoutes(){
             />
 
             <Screen
-                name="exercises"
+                name='exercise'
                 component={Exercises}
                 options={{tabBarButton:() => null }}
             />
