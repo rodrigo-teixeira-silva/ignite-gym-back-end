@@ -8,6 +8,7 @@ import {
   Text,
   Heading,
   useToast,
+  Toast,
 } from "native-base";
 import * as ImagePiker from "expo-image-picker";
 import * as FileSystem from "expo-file-system";
@@ -18,12 +19,18 @@ import * as yup from "yup";
 
 import { Controller, useForm } from "react-hook-form";
 
+import { api } from "../service/api";
+
 import { useAuth } from "@hooks/useAuth";
+
+import defaultUserPhoto from '@assets/userPhotoDefault.png'
 
 import { ScreenHeader } from "@components/ScreenHeader";
 import { UserPhoto } from "@components/UserPhoto";
 import { Input } from "@components/input";
 import { Button } from "@components/button";
+import { AppError } from "@utils/AppError";
+
 
 const PHOTO_SIZE = 33;
 
@@ -36,21 +43,36 @@ type FormDataProps = {
 };
 
 const profileSchema = yup.object({
-  name: yup.string().required("Informe o nome"),
-  password: yup.string().min(6, 'A senha deve ter oelo menos 6 caracteres').nullable().transform((value)=> !!value ? value : null),
-  confirm_password: yup.string().nullable().transform((value) => !!value ? value : null).oneOf([yup.ref('password'), null], 'A confirmação de senha não confere.'),  
+    name: yup.string().required('Informe o nome'),
+    password: yup.string().min(6, 'A senha deve ter pelo menos 6 dígitos.').nullable().transform((value) => !!value ? value : null),
+    confirm_password: yup.string().nullable().transform((value) => !!value ? value : null).oneOf([yup.ref('password'), null], 'A confirmação de senha não confere.'),
+  })
 
-})
+// const profileSchema = yup.object({
+//   name: yup.string().required("Informe o nome"),
+//   password: yup.string().min(6, 'A senha deve ter oelo menos 6 caracteres').nullable().transform((value)=> !!value ? value : null),
+//   confirm_password: yup.string()
+//   .nullable().transform((value) => !!value ? value : null)
+//   .oneOf([yup.ref('password'), null], 'A confirmação de senha não conferem.')
+//   .when('password', {
+//     is: (Field: any) => Field,
+//     then: yup
+//     .string()
+//     .nullable()
+//     .required('Informe a confirmação da senha')
+//     .transform((value)=> !!value ? value : null),
+// }) 
+// });
 
 export function Profile() {
+  const [ isUpdating, setIsUpdating ] = useState(false);
+
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
 
-  const [userPhoto, setUserPhoto] = useState(
-    "https://github.com/rodrigo-teixeira-silva.png"
-  );
+ 
 
   const toast = useToast();
-  const { user } = useAuth();
+  const { user, updateUserProfile } = useAuth();
   const {
     control,
     handleSubmit,
@@ -64,7 +86,36 @@ export function Profile() {
   });
 
   async function handleProfileUpdate(data: FormDataProps) {
-    console.log(data);
+    try {
+        setIsUpdating(true);
+
+        const userUpdated = user;
+        userUpdated.name =data.name;
+
+        await api.put('/users', data);
+
+        await updateUserProfile(userUpdated);
+
+        Toast.show({
+            title: 'Perfil atualizado com sucesso!',
+            placement:'top',
+            bgColor:'green.500'
+        });
+
+       
+    } catch (error) {
+        const isApperror = error instanceof AppError;
+        const title = isApperror ? error.message : 'Não foi possível  atualizar os dados. Tente novamente mais tarde.'
+
+        Toast.show({
+            title: 'Perfil atualizado com sucesso!',
+            placement:'top',
+            bgColor:'green.500'
+        });
+
+    } finally {
+        setIsUpdating(false);
+    }
   }
 
   async function handleUserPhotoSelect() {
@@ -82,10 +133,9 @@ export function Profile() {
         return;
       }
 
-      if (photoSelected.assets[0].uri) {
-        const photoInfo = await FileSystem.getInfoAsync(
-          photoSelected.assets[0].uri
-        );
+      if (photoSelected.uri) {
+        const photoInfo = await FileSystem.getInfoAsync(photoSelected.uri);
+        
 
         if (photoInfo.size && photoInfo.size / 1024 / 1024 > 5) {
           return toast.show({
@@ -94,8 +144,36 @@ export function Profile() {
             bgColor: "red.500",
           });
         }
-        setUserPhoto(photoSelected.assets[0].uri);
-      }
+
+        const fileExtention = photoSelected.uri.split('.').pop();
+       
+
+        const photoFile = {
+            name: `${user.name}.${fileExtention}`.toLowerCase(),
+            uri: photoSelected.uri,
+            type:`${photoSelected.type}/${fileExtention}`
+        } as any;
+
+        const userPhotoUploadForm = new FormData();
+        userPhotoUploadForm.append('avatar', photoFile);
+
+        const avatarUpdatedResponse = await api.patch('/users/avatar', userPhotoUploadForm, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+
+        const userUpdated = user;
+        userUpdated.avatar = avatarUpdatedResponse.data.avatar;
+        updateUserProfile(userUpdated);
+
+        toast.show({
+            title: 'Foto atualizada!',
+            placement: 'top',
+            bgColor: 'green.500'
+          })
+        }
+      
     } catch (error) {
       console.log(error);
     } finally {
@@ -118,7 +196,12 @@ export function Profile() {
             />
           ) : (
             <UserPhoto
-              source={{ uri: userPhoto }}
+            source={
+                user.avatar 
+                ? 
+                { uri:`${api.defaults.baseURL}/avatar/${user.avatar}`}
+                : defaultUserPhoto 
+            }
               alt="foto do usuário "
               size={PHOTO_SIZE}
             />
@@ -178,8 +261,12 @@ export function Profile() {
           <Controller
             control={control}
             name="old_password"
-            render={({ field: { onChange } }) => (
-              <Input bg="gray.600" placeholder="Senha antiga" secureTextEntry />
+            render={({ field: { value, onChange } }) => (
+              <Input bg="gray.600" 
+              placeholder="Senha antiga" 
+              secureTextEntry 
+              onChangeText={onChange}
+              value={value} />
             )}
           />
 
@@ -214,6 +301,7 @@ export function Profile() {
             title="Atualizar"
             mt={4}
             onPress={handleSubmit(handleProfileUpdate)}
+            isLoading={isUpdating}
           />
         </Center>
       </ScrollView>
