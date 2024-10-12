@@ -35,5 +35,3 @@ class UserRefreshToken {
     return response.json({ token, refresh_token });
   }
 }
-
-module.exports = UserRefreshToken;
