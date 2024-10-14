@@ -1,85 +1,130 @@
 
 ## 💻 Projeto
 
-# Ignite Gym
+# Ignite Gym - Back end
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/linkdri1/Ignite_Gym/blob/rotas_privadas/LICENSE)
 
 # Sobre o projeto
 
-Aplicação com lista de treinos diários com react-native, componentes estilização, biblioteca native base, rotas da aplicação 
+Aplicação com lista de treinos diários utilizando react-native, back end e rotas da aplicação 
 
- **</>Codelink**.
+ **</>Code link Project**.
 
-Aplicação utilizando framework react native na pratica, SignIn, SignUp, tela principal cards treinos diarios, tela de edição com acesso netivo a galeria de fotos. 
+Aplicação utilizando framework react native na pratica, SignIn, SignUp, tela principal cards treinos diarios, tela de edição com acesso netivo a galeria de fotos e auteração de senha utilizando dados vindos do bach end. 
 
 ## Layout mobile
-|  Tela SignIn  |   Tela de SignUp  |     Tela Home    |
-| ------------- | ----------------- | ---------------- | 
-| <img src="./assets/imagem-2.png" width="200px" height="400px" style="padding-right: 10px;"/> | <img src="./assets/imagem-3.png" width="200px" height="400px" style="padding-left: 10px;"/> | <img src="./assets/imagem-4.png" width="200px" height="400px" style="padding-left: 10px;"/> |
 
-|  Tela Treino  |  Tela de histórico de execícios  |  Tela de perfil]   |
-| ------------- | -------------------------------- | ------------------ | 
-| <img src="./assets/imagem-5.png" width="200px" height="400px" style="padding-right: 10px;"/> | <img src="./assets/imagem-6.png" width="200px" height="400px" style="padding-left: 10px;"/> | <img src="./assets/imagem-7.png" width="200px" height="400px" style="padding-left: 10px;"/>  |
+| **Tela de login com resposta de erro da API** | **Tela de cadastro** | **Tela de cadastro com campos obrigatórios** |
+| :-------------------------------------------: | :------------------: | :------------------------------------------: |
+| <img src="./assets/Tela de login com resposta de erro vindo da api.png" width="200px" height="350px"/> | <img src="./assets/Tela de cadastro.png" width="270px" height="350px"/> | <img src="./assets/tela de cadastro com campos obrigatórios.png" width="200px" height="350px"/> |
+
+|**Home com imagem atualizada no dispositivo** | **Tela de card de exercício** | **Tela de perfil** |
+| :-------------------------------------------: | :----------------------------: | :----------------: |
+| <img src="./assets/home com imagem atualizada no dispoditivo.png" width="170px" height="350px"/> | <img src="./assets/Tela de card de exercicío.png" width="300px" height="350px"/> | <img src="./assets/Tela de perfil.png" width="320px" height="350px"/> |
+
+| **Tela de perfil com resposta tratada do back-end** |
+| :------------------------------------------------: |
+
+| <img src="./assets/Tela de perfil com resposta tratada do back end.png" width="170px" height="350px"/> |
 
 
 
 
-![Tela Treino](./assets/imagem-5.png)
-![Tela de histórico de execícios](./assets/imagem-6.png)
-![Tela de perfil](./assets/imagem-7.png)
+
 
 # Tecnologias utilizadas
 ## Aplicação
 
-- [Native base](https://nativebase.io)
-- [TypeScript](https://www.typescriptlang.org/docs/)
-- [Expo](https://docs.expo.dev/?utm_source=google&utm_medium=cpc&utm_content=search&gclid=CjwKCAjwxOymBhAFEiwAnodBLE4O6-g49a-HniPnrQt_l-6t_CNvui4z2_h31jUCUpesirHbFYmI_hoC39IQAvD_BwE)
 
-- [Google fonts](https://docs.expo.dev/develop/user-interface/fonts/#use-a-google-font)
-- [Babel -plugin-module-resolver](https://github.com/tleunen/babel-plugin-module-resolver#readme)
-- [Styled components](www.google.com/url)
-- [Use google fonts](https://docs.expo.dev/develop/user-interface/fonts/#use-a-google-font)
--[phosphor icons](https://phosphoricons.com)
-- [React Navigation](https://reactnavigation.org)
--[Image picker](https://docs.expo.dev/versions/latest/sdk/imagepicker/)
-- [NPM](https://docs.npmjs.com)
+- ["@hookform/resolvers"](https://www.npmjs.com/package/@hookform/resolvers)
+- ["@react-navigation/bottom-tabs"](https://www.npmjs.com/package/@react-navigation/bottom-tabs)
+- ["@react-navigation/native"](https://www.npmjs.com/package/@react-navigation/native)
+- ["@react-navigation/native-stack"](https://www.npmjs.com/package/@react-navigation/native-stack)
+- ["axios"](https://www.npmjs.com/package/axios)
+- ["expo"](https://www.npmjs.com/package/expo)
+- ["expo-file-system"](https://www.npmjs.com/package/expo-file-system)
+- ["expo-image-picker"](https://www.npmjs.com/package/expo-image-picker) 
+- ["express"](https://www.npmjs.com/package/express)
+- ["jsonwebtoken"](https://www.npmjs.com/package/jsonwebtoken)
+- ["native-base"](https://nativebase.io)
+- ["react"](https://reactjs.org/)
+- ["react-hook-form"](https://react-hook-form.com/)
+- ["react-native"](https://reactnative.dev/)
+- ["react-native-safe-area-context"](https://www.npmjs.com/package/react-native-safe-area-context)
+- ["react-native-screens"](https://www.npmjs.com/package/react-native-screens)
+- ["react-native-svg"](https://github.com/react-native-svg/react-native-svg)
+- ["yup"](https://www.npmjs.com/package/yup)
+- ["@react-native-async-storage/async-storage"](https://github.com/react-native-async-storage/async-storage)
 
 
-# Funcionalidades do projet
+# Funcionalidades do projeto
 
 - [x] Tela SignIn 
 - [x] Tela SignUp
 - [x] Tela Home
-- [x] Tela de Treino do dia 
+- [x] Tela de Treinos do dia 
 - [x] Tela de histórico de execícios
 - [x] Perfil
 
 
 # Como executar o projeto
 
+## clonar repositório
+
 ```bash
-# clonar repositório
-https://github.com/rodrigo-teixeira-silva/Ignite_Gym.git
+git clone https://github.com/rodrigo-teixeira-silva/Ignite_Gym.git
 
-# entrar na pasta do projeto.
-cd Projeto Ignite_Gym
+```
+## Instalar o npm 
 
-# instalar o pacote node_modules.
+```bash
+# cd Ignite_Gymignite-gym-back-end/mobile
 npm install
+```
+
+```bash
+# cd Ignite_Gymignite-gym-back-end/api
+npm install
+```
+# Rodar a api 
+
+```bash
+# rodar a api
+npm start 
+
+ou
+
+# para que as alterações sejam atualizadas em tempo real
+npm run dev 
+```
+
 
 # Executar o projeto
-npx expo run start
+
+
+```
+# cd Ignite_Gymignite-gym-back-end/api
+npx expo start
+```
+
 ```
 ## Aplicação Mobile
 Pré-requisitos: npm 
+
+```
+# Autor
+
 
 # Autor
 
 Rodrigo Teixeira Silva
 
-<img style = "width:200px" src="https://github.com/rodrigo-teixeira-silva.png" alt="Imagem desenvolvedor" >
-
-## [Linkedin](https://www.linkedin.com/in/rodrigo-teixeira-silva/)
+<img style="width:200px; height:200px; border-radius: 50%;" src="https://avatars.githubusercontent.com/rodrigo-teixeira-silva" alt="Imagem desenvolvedor">
 
 
+
+## Contatos
+
+| [GitHub](https://github.com/rodrigo-teixeira-silva) | [LinkedIn](https://www.linkedin.com/in/rodrigo-teixeira-silva/) |
+| :-------------------------------------------------: | :------------------------------------------------------------: |
