@@ -47,7 +47,7 @@ export function SignIn() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
-    //    resolver: yupResolver(SignInSchema),
+      //  resolver: yupResolver(SignInSchema),
   });
 
   const navigation = useNavigation<AuthNavigationRoutesProps>();
@@ -115,6 +115,10 @@ export function SignIn() {
                 onChangeText={onChange}
                 value={value}
                 errorMessage={errors.email?.message}
+                style={{
+                  borderColor: errors.email ? 'red' : 'transparent', // Borda vermelha se houver erro
+                  borderWidth: 1, // Definir espessura da borda
+                }}
               />
             )}
           />
@@ -131,6 +135,10 @@ export function SignIn() {
                 onSubmitEditing={handleSubmit(handleSignIn)}
                 returnKeyType="send"
                 errorMessage={errors.password?.message}
+                style={{
+                  borderColor: errors.password ? 'red' : 'transparent', // Borda vermelha se houver erro
+                  borderWidth: 1,
+                }}
               />
             )}
           />

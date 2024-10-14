@@ -3,6 +3,8 @@ import { Heading, VStack, SectionList, Text, Flex, useToast} from "native-base";
 
 import { api } from "../service/api";
 
+import { Loading } from "@components/loading";
+
 import { ScreenHeader } from "@components/ScreenHeader";
 import { HistoryCard} from "@components/HistoryCard";
 import { historyByDayDTO } from "@dtos/historyByDayDTO";
@@ -48,6 +50,9 @@ export function History(){
         <VStack flex={1}>
           <ScreenHeader title="Histórico de exercícios"/>
 
+       { 
+        
+        isLoading ? <Loading/> :
         <SectionList 
         sections={exercises}
         keyExtractor={item => item.id}
@@ -69,6 +74,8 @@ export function History(){
         )}
         showsVerticalScrollIndicator={false}
         />
+        }
+
         </VStack>
     );
 
