@@ -15,21 +15,13 @@ Aplicação utilizando framework react native na pratica, SignIn, SignUp, tela p
 
 ## Layout mobile
 
-| **Tela de login com resposta de erro da API** | **Tela de cadastro** | **Tela de cadastro com campos obrigatórios** |
+| **Tela de login com resposta<br>de erro da API** | **Tela de cadastro** | **Tela de cadastro com<br>camposobrigatórios** |
 | :-------------------------------------------: | :------------------: | :------------------------------------------: |
-| <img src="mobile/assets/Tela de login com resposta de erro vindo da api.png" width="200px" height="350px"/> | <img src="mobile/assets/Tela de cadastro.png" width="270px" height="350px"/> | <img src="mobile/assets/tela de cadastro com campos obrigatórios.png" width="200px" height="350px"/> |
+| <img src="mobile/assets/Tela de login com resposta de erro vindo da api.png" width="200px" height="350px"/> | <img src="mobile/assets/Tela de cadastro.png" width="200px" height="350px"/> | <img src="mobile/assets/tela de cadastro com campos obrigatórios.png" width="200px" height="350px"/> |
 
-|**Home com imagem atualizada no dispositivo** | **Tela de card de exercício** | **Tela de perfil** |
-| :-------------------------------------------: | :----------------------------: | :----------------: |
-| <img src="mobile/assets/home com imagem atualizada no dispoditivo.png" width="170px" height="350px"/> | <img src="mobile/assets/Tela de card de exercicío.png" width="300px" height="350px"/> | <img src="mobile/assets/Tela de perfil.png" width="320px" height="350px"/> |
-
-| **Tela de perfil com resposta tratada do back-end** |
-| :------------------------------------------------: |
-
-| <img src="mobile/assets/Tela de perfil com resposta tratada do back end.png" width="170px" height="350px"/> |
-
-
-
+|**Home com imagem<br>atualizada** | **Card de exercício** | **Tela de perfil** | **Tela de perfil com resposta<br>tratada do back-end** |
+| :---------------------------: | :-------------------: | :----------------: | :-------------------------------: |
+| <img src="mobile/assets/home com imagem atualizada no dispoditivo.png" width="170px" height="350px"/> | <img src="mobile/assets/Tela de card de exercicío.png" width="180px" height="350px"/> | <img src="mobile/assets/Tela de perfil.png" width="180px" height="350px"/> | <img src="mobile/assets/Tela de perfil com resposta tratada do back end.png" width="170px" height="350px"/> |
 
 
 
@@ -104,7 +96,7 @@ npm run dev
 
 
 ```
-# cd Ignite_Gymignite-gym-back-end/api
+# cd Ignite_Gymignite-gym-back-end/mobile
 npx expo start
 ```
 
