@@ -14,13 +14,13 @@ type APIIntanceProps = AxiosInstance & {
 };
 
 const api = axios.create({
-  baseURL: "http://192.168.100.58:3333" // Verifique se este IP está acessível na sua rede
+  baseURL: "http://192.168.100.58:3333"
 }) as APIIntanceProps;
 
 let failedQueue: Array<PromiseType> = [];
 let isRefreshing = false;
 
-// Verificação da função de salvamento e obtenção de token
+
 const debugStorageAuthToken = async () => {
   const tokens = await storageAuthTokenGet();
   console.log('Tokens atualmente armazenados:', tokens);
@@ -29,16 +29,16 @@ const debugStorageAuthToken = async () => {
 
 api.registerInterceptTokenManager = (SignOut) => {
   const interceptTokenManager = api.interceptors.response.use(
-    response => response, // Resposta bem-sucedida
+    response => response, 
     async (requestError) => {
-      console.log('Erro na requisição:', requestError); // Log do erro recebido
+      console.log('Erro na requisição:', requestError); 
 
-      if (requestError?.response?.status === 401) { // Verifica se o status do erro é 401
+      if (requestError?.response?.status === 401) { 
         console.log('Erro 401 detectado. Tentando renovar o token...');
 
-        // Verifica se o motivo do erro foi token expirado ou inválido
+       
         if (requestError.response.data.message === 'token.expired' || requestError.response.data?.message === 'token.invalid') {
-          const tokens = await debugStorageAuthToken(); // Função de depuração para verificar tokens no armazenamento
+          const tokens = await debugStorageAuthToken(); 
           const refresh_token = tokens?.refresh_token;
           console.log('Refresh token obtido:', refresh_token);
 
@@ -51,7 +51,7 @@ api.registerInterceptTokenManager = (SignOut) => {
           const originalRequestConfig = requestError.config;
           console.log('Configuração da requisição original:', originalRequestConfig);
 
-          // Se já estiver em processo de atualização, coloca a requisição na fila
+         
           if (isRefreshing) {
             return new Promise((resolver, reject) => {
               failedQueue.push({
@@ -76,7 +76,7 @@ api.registerInterceptTokenManager = (SignOut) => {
               const { data } = await api.post('/sessions/refresh-token', { refresh_token });
               console.log('Token atualizado com sucesso:', data.token);
 
-              // Log adicional para garantir que o token foi salvo
+              
               console.log('Salvando token e refresh_token:', { token: data.token, refresh_token: data.refresh_token });
               await storageAuthTokenSave({ token: data.token, refresh_token: data.refresh_token });
               console.log('Novo token e refresh token salvos com sucesso.');
@@ -93,7 +93,7 @@ api.registerInterceptTokenManager = (SignOut) => {
                 request.onSuccess(data.token);
               });
 
-              resolve(api(originalRequestConfig)); // Refaz a requisição original com o novo token
+              resolve(api(originalRequestConfig)); 
             } catch (error: any) {
               console.log('Erro ao atualizar o token:', error);
               failedQueue.forEach(request => {
@@ -109,7 +109,7 @@ api.registerInterceptTokenManager = (SignOut) => {
           });
         }
 
-        SignOut(); // Faz logout se o erro não for relacionado ao token
+        SignOut(); 
       }
 
       if (requestError.response && requestError.response.data) {
@@ -123,7 +123,7 @@ api.registerInterceptTokenManager = (SignOut) => {
   );
 
   return () => {
-    api.interceptors.response.eject(interceptTokenManager); // Remove o interceptor quando não for mais necessário
+    api.interceptors.response.eject(interceptTokenManager); 
   };
 };
 
