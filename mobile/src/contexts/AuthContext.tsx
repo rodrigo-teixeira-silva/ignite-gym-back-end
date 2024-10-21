@@ -57,7 +57,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       const { data } = await api.post("/sessions", { email, password });
 
       if (data.user && data.token && data.refresh_token) {
-        await storageUserAndTokenSave(data.user, data.token, data.refreshToken);
+        await storageUserAndTokenSave(data.user, data.token, data.refresh_token);
         userAndTokenUpdate(data.user, data.token );
       }
 
