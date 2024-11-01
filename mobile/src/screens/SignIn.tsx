@@ -1,5 +1,5 @@
-import { useForm, Controller } from "react-hook-form";
-import { useNavigation } from "@react-navigation/native";
+import { useForm, Controller } from 'react-hook-form';
+import { useNavigation } from '@react-navigation/native';
 import {
   VStack,
   Image,
@@ -7,24 +7,21 @@ import {
   Center,
   Heading,
   ScrollView,
-  Avatar,
   useToast,
-} from "native-base";
+} from 'native-base';
 
-import { AuthNavigationRoutesProps } from "@routes/auth.routes";
+import { AuthNavigationRoutesProps } from '@routes/auth.routes';
 
-import { useAuth } from "@hooks/useAuth";
+import { useAuth } from '@hooks/useAuth';
 
-import LogoSvg from "@assets/logo.svg";
-import BackgroundImg from "@assets/background.png";
+import LogoSvg from '@assets/logo.svg';
+import BackgroundImg from '@assets/background.png';
 
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-
-import { Input } from "@components/input";
-import { Button } from "@components/button";
-import { AppError } from "@utils/AppError";
-import { useState } from "react";
+import * as yup from 'yup';
+import { Input } from '@components/input';
+import { Button } from '@components/button';
+import { AppError } from '@utils/AppError';
+import { useState } from 'react';
 
 type FormData = {
   email: string;
@@ -32,11 +29,11 @@ type FormData = {
 };
 
 const SignInSchema = yup.object({
-  email: yup.string().required("Informe o E-mail.").email("E-mail inválido."),
+  email: yup.string().required('Informe o E-mail.').email('E-mail inválido.'),
   password: yup
     .string()
-    .required("Informe a senha.")
-    .min(6, "Asenha deve ter palo menos 6 digitos."),
+    .required('Informe a senha.')
+    .min(6, 'Asenha deve ter palo menos 6 digitos.'),
 });
 
 export function SignIn() {
@@ -47,7 +44,7 @@ export function SignIn() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
-      //  resolver: yupResolver(SignInSchema),
+    //  resolver: yupResolver(SignInSchema),
   });
 
   const navigation = useNavigation<AuthNavigationRoutesProps>();
@@ -55,7 +52,7 @@ export function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
 
   function handleNewAccount() {
-    navigation.navigate("signUp");
+    navigation.navigate('signUp');
   }
 
   async function handleSignIn({ email, password }: FormData) {
@@ -67,11 +64,11 @@ export function SignIn() {
 
       const title = isAppError
         ? error.message
-        : "Não foi possível entrar. Tente novamente mais tarde.";
+        : 'Não foi possível entrar. Tente novamente mais tarde.';
       toast.show({
         title,
-        placement: "top",
-        bgColor: "red.500",
+        placement: 'top',
+        bgColor: 'red.500',
       });
 
       setIsLoading(false);
