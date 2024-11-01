@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from '@react-navigation/native';
 import {
   VStack,
   Image,
@@ -7,41 +7,39 @@ import {
   Heading,
   ScrollView,
   useToast,
-} from "native-base";
-import { useForm, Controller } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+} from 'native-base';
+import { useForm, Controller } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-import axios from "axios";
-import { api } from "../service/api";
+import { api } from '../service/api';
 
-import LogoSvg from "@assets/logo.svg";
-import BackgroundImg from "@assets/background.png";
+import LogoSvg from '@assets/logo.svg';
+import BackgroundImg from '@assets/background.png';
 
-import { Input } from "@components/input";
-import { Button } from "@components/button";
-import { Alert } from "react-native";
-//import AppError from "api/src/utils/AppError";
-import { AppError } from "@utils/AppError";
+import { Input } from '@components/input';
+import { Button } from '@components/button';
+import { Alert } from 'react-native';
+import { AppError } from '@utils/AppError';
 
 type FormDataProps = {
-  name: string | undefined;
-  email: string | undefined;
-  password: string | undefined;
-  password_confirm: string | undefined;
+  name: string;
+  email: string;
+  password: string;
+  password_confirm: string;
 };
 
 const signUpSchema = yup.object({
-  name: yup.string().required("Informe o nome."),
-  email: yup.string().required("Informe o e-mail.").email("E-mail inválido."),
+  name: yup.string().required('Informe o nome.'),
+  email: yup.string().required('Informe o e-mail.').email('E-mail inválido.'),
   password: yup
     .string()
-    .required("Informe a senha. ")
-    .min(6, "A senha deve ter no minimo seis caracteres."),
+    .required('Informe a senha. ')
+    .min(6, 'A senha deve ter no minimo seis caracteres.'),
   password_confirm: yup
     .string()
-    .required("Confirme a senha.")
-    .oneOf([yup.ref("password"), null], "As senhas não conferem"),
+    .required('Confirme a senha.')
+    .oneOf([yup.ref('password'), null], 'As senhas não conferem'),
 });
 
 export function SignUp() {
@@ -60,25 +58,20 @@ export function SignUp() {
     navigation.goBack();
   }
 
-  async function handleSignUp({
-    name,
-    email,
-    password,
-    password_confirm,
-  }: FormDataProps) {
+  async function handleSignUp({ name, email, password }: FormDataProps) {
     try {
-      const response = await api.post("/users", { name, email, password });
+      const response = await api.post('/users', { name, email, password });
       console.log(response.data);
     } catch (error) {
       const isAppError = error instanceof AppError;
       const title = isAppError
         ? error.message
-        : "Não foi possível criar a conta. Tente novamente mais tarde.";
+        : 'Não foi possível criar a conta. Tente novamente mais tarde.';
 
       toast.show({
         title,
-        placement: "top",
-        bgColor: "red.500",
+        placement: 'top',
+        bgColor: 'red.500',
       });
     }
   }
